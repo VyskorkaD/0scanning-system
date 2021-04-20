@@ -1,0 +1,33 @@
+nav {
+    min-height: 100px;
+    background-color: #A68A68;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+nav ul {
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    float: right;
+}
+
+nav a {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    padding: 35px 100px 20px 20px;
+    color: #59452C;
+}
+
+nav a:hover {
+    color: #F2E2CE;
+}
+
+.active {
+    color: #F2E2CE;
+}

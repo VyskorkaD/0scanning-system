@@ -1,0 +1,26 @@
+.login-form {
+    margin: auto;
+    border: 1px solid #594D42;;
+    max-width: 300px;
+    padding: 20px;
+    background-color: #BFA58E;
+}
+
+.form-element {
+    display: block;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.form-button {
+    margin-left: 100px;
+}
+
+.form-element label {
+    margin-right: 10px;
+}
+
+button {
+    width: 100px;
+    
+}

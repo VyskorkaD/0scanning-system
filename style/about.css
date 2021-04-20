@@ -1,0 +1,8 @@
+.about-info {
+    max-width: 60%;
+    margin: auto;
+    background-color: #BFA58E;
+    border-left: 1px solid #594D42;
+    border-right: 1px solid #594D42;
+    padding: 10px;
+}
