@@ -17,5 +17,6 @@
                 <p>Druga wersja: w pełni funkcjonujący system, które będzie się łączył z systemem czyjników oraz interpretował dane wejściowe. Stworzony będzie w językach HTML, CSS, JavaScript (Framework Angular) po stronie front-endu oraz PHP (Framework Laravel) po stronie back-endu. Baza danych będzie oparta na systemie zarżadzania relacyjnymi bazami danych MySQL. Czujniki będą stworzone na bazie open-source platformy prototypowej Arduino. </p>
             </article>
         </section>
-    </body>
-</html>
+<?php
+    include_once 'footer.php';
+?>

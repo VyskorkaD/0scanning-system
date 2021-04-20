@@ -10,5 +10,6 @@
                 <p>E-mail: dmytro.vyskorka@gmail.com</p>
             </div>
         </section>
-    </body>
-</html>
+<?php
+    include_once 'footer.php';
+?>

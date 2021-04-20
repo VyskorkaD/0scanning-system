@@ -1,4 +1,4 @@
-.login-form {
+.my-form {
     margin: auto;
     border: 1px solid #594D42;;
     max-width: 300px;
@@ -22,5 +22,5 @@
 
 button {
     width: 100px;
-    
+
 }
