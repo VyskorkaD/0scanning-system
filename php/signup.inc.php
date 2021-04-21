@@ -35,6 +35,11 @@
          exit();
      }
 
+     if(emailAlreadyTaken($conn, $email) !== false) {
+         header("location: ../signup.php?error=emailalreadytaken");
+         exit();
+     }
+
      createUser($conn, $name, $username, $email, $password);
 
  }
