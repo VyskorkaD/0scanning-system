@@ -15,7 +15,7 @@
         exit();
      }
 
-     if(invalidUserName($username) !== false) {                                 //error handler - is username valid?
+     if(invalidUserName($username) !== false){                                 //error handler - is username valid?
          header("location: ../signup.php?error=invalidusername");
          exit();
      }
