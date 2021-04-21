@@ -1,7 +1,7 @@
 <?php
     include_once 'header.php';
 ?>
-        <section class="my-form">
+        <section class="signup-form">
             <form class="registration" id="signup-form" action="php/signup.php" method="POST">
                 <div class="form-element">
                     <label for="e-mail">E-mail: </label>

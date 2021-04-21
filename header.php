@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="style/main.css">
         <link rel="stylesheet" href="style/about.css">
         <link rel="stylesheet" href="style/log-in.css">
+        <link rel="stylesheet" href="style/signup.css">
         <title></title>
 
     </head>

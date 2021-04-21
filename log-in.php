@@ -1,7 +1,7 @@
 <?php
     include_once 'header.php';
 ?>
-        <section class="my-form">
+        <section class="login-form">
             <form class="logowanie" id="login-form" action="php/login.php" method="POST">
                 <div class="form-element">
                     <label for="login">Login: </label>
