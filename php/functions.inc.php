@@ -79,7 +79,7 @@ function emailAlreadyTaken($conn, $email) {
     mysqli_stmt_bind_param($stmt, 's', $email);
     mysqli_stmt_execute($stmt);
 
-    $resultData = mysqli_stmt_gets_results($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
 
     if($row = mysqli_fetch_assoc($resultData)) {
         return $row;
@@ -90,7 +90,7 @@ function emailAlreadyTaken($conn, $email) {
     }
 }
 
-function createUser($conn, $name, $username, $email, $password) {
+function createUser($conn, $name, $email, $username, $password) {
     $sql = "INSERT INTO users (usersName, usersEmail, usersUsername, usersPassword) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
 
