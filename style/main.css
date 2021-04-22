@@ -1,10 +1,18 @@
+@font-face {
+    font-family: mainFont;
+    src: url("../fonts/roboto/Roboto-Regular.ttf");
+}
+
 body {
     background-color: #D9BD9C;
     color: #594D42;
+    font-family: mainFont;
 }
 
 .error-message {
-    margin: auto;
-    font-size: 20px;
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
     font-weight: 700;
 }
