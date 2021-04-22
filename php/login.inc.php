@@ -1,8 +1,22 @@
 <?php
-if(($_POST['user_login'] == 'root') && ($_POST['user_password'] == 'root')) {
-        header("Location: ../logged-in.php");
+
+if (isset($_POST["submit"])) {
+    $username = $_POST["user_username"];
+    $password = $_POST["user_password"];
+
+    require_once 'dbh.inc.php';
+    require_once 'functions.inc.php';
+
+    if (emptyInputLogIn($username, $password) !== false) {       //info in signup.inc.php
+       header("location: ../log-in.php?error=emptyinput");
+       exit();
     }
-    else {
-        header("Location: ../log-in.php");
-    }
-?>
+
+    /* Add more error handlers later */
+
+    loginUser($conn, $username, $password);
+}
+else {
+    header("location: ../log-in.php");
+    exit();
+}

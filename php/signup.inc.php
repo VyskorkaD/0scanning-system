@@ -30,15 +30,15 @@
          exit();
      }
 
-     if(usernameExists($conn, $username) !== false) {
+     if(usernameExists($conn, $username, $email) !== false) {
          header("location: ../signup.php?error=usernametaken");
          exit();
      }
 
-     if(emailAlreadyTaken($conn, $email) !== false) {
+     /*if(emailAlreadyTaken($conn, $email) !== false) {
          header("location: ../signup.php?error=emailalreadytaken");
          exit();
-     }
+     }*/
 
      createUser($conn, $name, $username, $email, $password);
 

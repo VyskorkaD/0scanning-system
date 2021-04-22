@@ -1,6 +1,11 @@
 <?php
     include_once 'header.php';
 ?>
+        <?php
+        if (isset($_SESSION["userName"])) {
+            echo "<p>Hello there, " . $_SESSION["userName"] . "</p>";
+        }
+        ?>
 
         <section class="about-info">
             <article class="about-main">

@@ -10,6 +10,8 @@ function emptyInputSignUp($name, $username, $email, $password, $passwordRepeat) 
     return $result;
 }
 
+
+
 function invalidUserName($username) {
     $result;
     if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {                            //check if $username DOES NOT have only symbols from pattern
@@ -20,6 +22,8 @@ function invalidUserName($username) {
     }
     return $result;
 }
+
+
 
 function invalidEmail($email) {
     $result;
@@ -32,6 +36,8 @@ function invalidEmail($email) {
     return $result;
 }
 
+
+
 function passwordMatch($password, $passwordRepeat) {
     $result;
     if ($password !== $passwordRepeat) {                                    //check if passwords are not the same
@@ -43,15 +49,17 @@ function passwordMatch($password, $passwordRepeat) {
     return $result;
 }
 
-function usernameExists($conn, $username) {
-    $sql = "SELECT * FROM users WHERE usersUsername = ?;";                  //create an SQL statement. "stmt" for statement
+
+
+function usernameExists($conn, $username, $email) {
+    $sql = "SELECT * FROM users WHERE usersUsername = ? OR usersEMAIL = ?;";                  //create an SQL statement. "stmt" for statement
     $stmt = mysqli_stmt_init($conn);                                        //initialize a statement (i don't exactly know how it works)
     if (!mysqli_stmt_prepare($stmt, $sql)) {                                //run $sql in DB (with $stmt) and see if there are any errors
         header("location: ../signup.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "s", $username);                          //bind parameters to the SQL query and tell DB what the parameters are. "s" for string
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);                          //bind parameters to the SQL query and tell DB what the parameters are. "s" for string
     mysqli_stmt_execute($stmt);
 
     $resultData = mysqli_stmt_get_result($stmt);                         //Take result data from the DB (after executing $sql statement)
@@ -67,7 +75,9 @@ function usernameExists($conn, $username) {
     mysqli_stmt_close($stmt);
 }
 
-function emailAlreadyTaken($conn, $email) {
+
+
+/*function emailAlreadyTaken($conn, $email) {
     $sql = "SELECT * FROM users WHERE usersEmail =?;";
     $stmt = mysqli_stmt_init($conn);
 
@@ -88,7 +98,9 @@ function emailAlreadyTaken($conn, $email) {
         $result = false;
         return $result;
     }
-}
+}*/
+
+
 
 function createUser($conn, $name, $email, $username, $password) {
     $sql = "INSERT INTO users (usersName, usersEmail, usersUsername, usersPassword) VALUES (?, ?, ?, ?);";
@@ -106,4 +118,42 @@ function createUser($conn, $name, $email, $username, $password) {
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
     exit();
+}
+
+
+
+function emptyInputLogin($username, $password) {
+    $result;
+    if (empty($username) || empty($password)) {
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
+
+/* Function that logs in user */
+function loginUSer($conn, $username, $password) {
+    $usernameExists = usernameExists($conn, $username, $username);  //try to grab user from DB
+
+    if ($usernameExists == false) {    //if no, redirect with error
+        header("location: ../log-in.php?error=wronglogin");
+        exit();
+    }
+
+    $passwordHashed = $usernameExists["usersPassword"];  //grab hashed password from DB
+    $checkPassword = password_verify($password, $passwordHashed);  //verify if pwd from user is the same as in DB
+
+    if ($checkPassword === false) {  //if no, redirect with error
+        header("location: ../log-in.php?error=wronglogin");
+        exit();
+    }
+    else if ($checkPassword === true) {
+        session_start();    //if yes, start new session
+        $_SESSION["userid"] = $usernameExists["usersID"];
+        $_SESSION["userName"] = $usernameExists["usersUsername"];
+        header("location: ../about.php");
+        exit();
+    }
 }
