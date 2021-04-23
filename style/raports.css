@@ -23,3 +23,22 @@ button {
 button:hover {
     background-color: #F2E2CE;
 }
+
+.raports {
+    display: none;
+    position: absolute;
+    top: 250px;
+    left: 75px;
+    background-color: #594D42;
+    border-radius: 10%;
+}
+
+.show {
+    display: block;
+}
+
+.raports p {
+    font-size: 18px;
+    color: #F2E2CE;
+    padding: 5px 30px;
+}
