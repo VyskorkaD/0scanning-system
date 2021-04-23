@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="style/about.css">
         <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="style/signup.css">
+        <link rel="stylesheet" href="style/raports.css">
         <title></title>
 
     </head>
@@ -22,6 +23,7 @@
                 if (isset($_SESSION["userName"])) {
                     echo "<li><a class='' href='profile.php'>Profile</a></li>";
                     echo "<li><a class='' href='php/logout.inc.php'>Log out</a></li>";
+                    echo "<li><a class='' href='raports.php'>Raports</a></li>";
                 }
                 else {
                     echo "<li><a class='' href='login.php'>Log in</a></li>";
