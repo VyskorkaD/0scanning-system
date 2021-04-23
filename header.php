@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="style/navbar.css">
         <link rel="stylesheet" href="style/main.css">
         <link rel="stylesheet" href="style/about.css">
-        <link rel="stylesheet" href="style/log-in.css">
+        <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="style/signup.css">
         <title></title>
 
@@ -24,7 +24,7 @@
                     echo "<li><a class='' href='php/logout.inc.php'>Log out</a></li>";
                 }
                 else {
-                    echo "<li><a class='' href='log-in.php'>Log in</a></li>";
+                    echo "<li><a class='' href='login.php'>Log in</a></li>";
                     echo "<li><a class='' href='signup.php'>Sign In</a></li>";
                 }
                 ?>

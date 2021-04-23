@@ -138,7 +138,7 @@ function loginUSer($conn, $username, $password) {
     $usernameExists = usernameExists($conn, $username, $username);  //try to grab user from DB
 
     if ($usernameExists == false) {    //if no, redirect with error
-        header("location: ../log-in.php?error=wronglogin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     }
 
@@ -146,7 +146,7 @@ function loginUSer($conn, $username, $password) {
     $checkPassword = password_verify($password, $passwordHashed);  //verify if pwd from user is the same as in DB
 
     if ($checkPassword === false) {  //if no, redirect with error
-        header("location: ../log-in.php?error=wronglogin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     }
     else if ($checkPassword === true) {
