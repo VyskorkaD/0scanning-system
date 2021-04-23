@@ -27,8 +27,8 @@ button:hover {
 .raports {
     display: none;
     position: absolute;
-    top: 250px;
-    left: 75px;
+    margin: auto;
+    top: 300px;
     background-color: #594D42;
     border-radius: 10%;
 }
