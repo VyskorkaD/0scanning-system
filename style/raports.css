@@ -42,3 +42,11 @@ button:hover {
     color: #F2E2CE;
     padding: 5px 30px;
 }
+
+.raports a {
+    text-decoration: none;
+}
+
+.raports p:hover {
+    color: #A69077;
+}

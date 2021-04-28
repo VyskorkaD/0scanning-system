@@ -12,39 +12,63 @@
         <div class="raport-type">
             <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-1">Przejazd</button>
             <section class="raports">
-                <p>Raport przejazdu 1</p>
-                <p>Raport przejazdu 2</p>
-                <p>Raport przejazdu 3</p>
-                <p>Raport przejazdu 4</p>
-                <p>Raport przejazdu 5</p>
-                <p>Raport przejazdu 6</p>
+                <?php
+                    $scannedDirectory = scandir("raports/ride");
+                    $filesList = array_slice($scannedDirectory, 2);
+                    if (!empty($filesList)) {
+                        foreach ($filesList as $file) {
+                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                        }
+                    }
+                    else {
+                        echo "<p>Brak raportów.</p>";
+                    }
+                ?>
             </section>
             <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-2">Dzienny</button>
             <section class="raports">
-                <p>Raport dzienny 1</p>
-                <p>Raport dzienny 2</p>
-                <p>Raport dzienny 3</p>
-                <p>Raport dzienny 4</p>
-                <p>Raport dzienny 5</p>
-                <p>Raport dzienny 6</p>
+                <?php
+                    $scannedDirectory = scandir("raports/daily");
+                    $filesList = array_slice($scannedDirectory, 2);
+                    if (!empty($filesList)) {
+                       foreach ($filesList as $file) {
+                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                        }
+                    }
+                    else {
+                        echo "<p>Brak raportów.</p>";
+                    }
+                ?>
             </section>
             <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-3">Tygodniowy</button>
             <section class="raports">
-                <p>Raport tygodniowy 1</p>
-                <p>Raport tygodniowy 2</p>
-                <p>Raport tygodniowy 3</p>
-                <p>Raport tygodniowy 4</p>
-                <p>Raport tygodniowy 5</p>
-                <p>Raport tygodniowy 6</p>
+                <?php
+                    $scannedDirectory = scandir("raports/weekly");
+                    $filesList = array_slice($scannedDirectory, 2);
+                    if (!empty($filesList)) {
+                        foreach ($filesList as $file) {
+                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                        }
+                    }
+                    else {
+                        echo "<p>Brak raportów.</p>";
+                    }
+                ?>
             </section>
             <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-4">Miesięczny</button>
             <section class="raports">
-                <p>Raport miesięczny 1</p>
-                <p>Raport miesięczny 2</p>
-                <p>Raport miesięczny 3</p>
-                <p>Raport miesięczny 4</p>
-                <p>Raport miesięczny 5</p>
-                <p>Raport miesięczny 6</p>
+                <?php
+                    $scannedDirectory = scandir("raports/monthly");
+                    $filesList = array_slice($scannedDirectory, 2);
+                    if (!empty($filesList)) {
+                        foreach ($filesList as $file) {
+                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                        }
+                    }
+                    else {
+                        echo "<p>Brak raportów.</p>";
+                    }
+                ?>
             </section>
         </div>
 
