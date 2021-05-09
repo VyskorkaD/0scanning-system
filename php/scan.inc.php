@@ -1,20 +1,19 @@
 <?php
-function checkTime($time) {                 //return the number of passangers depends on time
-    $numOfPassengers;
+function checkTime($time) {                 //return the number of passengers depends on time
     if ($time >= 0 && $time < 6) {
-        $numOfPassengers = rand(20, 40);
+        $numOfPassengers = mt_rand(20, 40);
     }
     else if ($time >= 6 && $time < 9) {
-        $numOfPassengers = rand(150, 500);
+        $numOfPassengers = mt_rand(150, 500);
     }
     else if ($time >= 9 && $time < 15) {
-        $numOfPassengers = rand(80, 400);
+        $numOfPassengers = mt_rand(80, 400);
     }
     else if ($time >= 15 && $time < 18) {
-        $numOfPassengers = rand(130, 460);
+        $numOfPassengers = mt_rand(130, 460);
     }
     else if ($time >= 18 && $time <= 23) {
-        $numOfPassengers = rand(80, 130);
+        $numOfPassengers = mt_rand(80, 130);
     }
     else {
         echo "Scanning error: generating number.";
@@ -23,13 +22,39 @@ function checkTime($time) {                 //return the number of passangers de
     return $numOfPassengers;
 }
 
-function generateDayliNumber() {                        // generate dayli number of passangers 
-    $dayliNumber = 0;
-    for ($i = 0; $i < 24; $i++) {
-        $dayliNumber = $dayliNumber + checkTime($i);
+
+function generateRideNumber () {            //generate passenger number for ride
+    $rideNumber = 0;
+    $startTime = mt_rand(0, 23);
+    if ($startTime <= 22) {
+        $endTime = $startTime + 1;
     }
-    return $dayliNumber;
+    elseif ($startTime === 23) {
+        $endTime = 0;
+    }
+    $rideNumber += checkTime($startTime);
+    $rideNumber += checkTime($endTime);
+    return $rideNumber;
 }
 
-$dayliNumberOfPassengers = generateDayliNumber();
-//echo $dayliNumberOfPassengers;
+
+function generateNumber($days) {                        // generate daily number of passengers
+    $numberOfPassengers = 0;
+    for ($j = 0; $j < $days; $j++) {
+        for ($i = 0; $i < 24; $i++) {
+            $numberOfPassengers += checkTime($i);
+        }
+    }
+    return $numberOfPassengers;
+}
+
+
+$rideNumberOfPassengers = generateRideNumber();
+$dailyNumberOfPassengers = generateNumber(1);
+$weeklyNumberOfPassengers = generateNumber(7);
+$monthlyNumberOfPassengers = generateNumber(31);
+
+echo $rideNumberOfPassengers . "<br>";
+echo $dailyNumberOfPassengers . "<br>";
+echo $weeklyNumberOfPassengers . "<br>";
+echo $monthlyNumberOfPassengers;

@@ -17,7 +17,7 @@
                     $filesList = array_slice($scannedDirectory, 2);
                     if (!empty($filesList)) {
                         foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                            echo "<a href=\"./raports/ride/$file\" download><p>$file</p></a>";
                         }
                     }
                     else {
@@ -47,7 +47,7 @@
                     $filesList = array_slice($scannedDirectory, 2);
                     if (!empty($filesList)) {
                         foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                            echo "<a href=\"./raports/weekly/$file\" download><p>$file</p></a>";
                         }
                     }
                     else {
@@ -62,7 +62,7 @@
                     $filesList = array_slice($scannedDirectory, 2);
                     if (!empty($filesList)) {
                         foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
+                            echo "<a href=\"./raports/monthly/$file\" download><p>$file</p></a>";
                         }
                     }
                     else {
