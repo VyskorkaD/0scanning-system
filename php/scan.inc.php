@@ -54,7 +54,7 @@ $dailyNumberOfPassengers = generateNumber(1);
 $weeklyNumberOfPassengers = generateNumber(7);
 $monthlyNumberOfPassengers = generateNumber(31);
 
-echo $rideNumberOfPassengers . "<br>";
-echo $dailyNumberOfPassengers . "<br>";
-echo $weeklyNumberOfPassengers . "<br>";
-echo $monthlyNumberOfPassengers;
+echo "Liczba pasażerów za przejazd: " . $rideNumberOfPassengers . "<br>";
+echo "Dzienna liczba pasażerów: " . $dailyNumberOfPassengers . "<br>";
+echo "Tygodniowa liczba pasażerów: " . $weeklyNumberOfPassengers . "<br>";
+echo "Miesięczna liczba pasażerów: " . $monthlyNumberOfPassengers;

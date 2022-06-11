@@ -53,7 +53,7 @@ function passwordMatch($password, $passwordRepeat) {
 
 function usernameExists($conn, $username, $email) {
     $sql = "SELECT * FROM users WHERE usersUsername = ? OR usersEMAIL = ?;";                  //create an SQL statement. "stmt" for statement
-    $stmt = mysqli_stmt_init($conn);                                        //initialize a statement (i don't exactly know how it works)
+    $stmt = mysqli_stmt_init($conn);                                        //initialize a statement
     if (!mysqli_stmt_prepare($stmt, $sql)) {                                //run $sql in DB (with $stmt) and see if there are any errors
         header("location: ../signup.php?error=stmtfailed");
         exit();
@@ -92,6 +92,26 @@ function createUser($conn, $name, $email, $username, $password) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
+    exit();
+}
+
+
+
+function deleteUser($conn, $name) {
+    $sql = "DELETE FROM users WHERE usersUsername = '$name';";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    var_dump($stmt);
+    //mysqli_stmt_bind_param($stmt, "s", $name);
+    mysqli_stmt_execute($stmt);
+    //mysqli_stmt_close($stmt);
+
+    session_start();
+    session_unset();
+    session_destroy();
+    header("location: ../about.php");
+
     exit();
 }
 
