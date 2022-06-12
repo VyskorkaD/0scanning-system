@@ -96,16 +96,31 @@ function createUser($conn, $name, $email, $username, $password) {
 }
 
 
+function editUser ($conn, $name, $email, $username) {
+
+    $sql = "UPDATE users
+            SET usersName = '$name', usersEmail = '$email'
+            WHERE usersUsername = '$username';";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    var_dump($stmt);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    session_start();
+    session_unset();
+    session_destroy();
+    header ("location: ../about.php");
+    //header("location: ../profile.php?error=none");
+    exit();
+}
+
 
 function deleteUser($conn, $name) {
     $sql = "DELETE FROM users WHERE usersUsername = '$name';";
     $stmt = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt, $sql);
-    var_dump($stmt);
-    //mysqli_stmt_bind_param($stmt, "s", $name);
     mysqli_stmt_execute($stmt);
-    //mysqli_stmt_close($stmt);
 
     session_start();
     session_unset();
@@ -115,7 +130,16 @@ function deleteUser($conn, $name) {
     exit();
 }
 
-
+function emptyInputEdit($name, $email, $username) {
+    $result;
+    if (empty($name) || empty($email) || empty($username)) {
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
 
 function emptyInputLogin($username, $password) {
     $result;
@@ -148,6 +172,8 @@ function loginUSer($conn, $username, $password) {
         session_start();    //if yes, start new session
         $_SESSION["userid"] = $usernameExists["usersID"];
         $_SESSION["userName"] = $usernameExists["usersUsername"];
+        $_SESSION["userEmail"] = $usernameExists["usersEmail"];
+        $_SESSION["userFullname"] = $usernameExists["usersName"];
         header("location: ../about.php");
         exit();
     }
