@@ -1,4 +1,9 @@
 <?php
+
+define("WORKING_DAYS", 1);
+define("SATURDAY", 0.5844);
+define("SUNDAY", 0.4088);
+
 function checkTime($time) {                 //return the number of passengers depends on time
     if ($time >= 0 && $time < 6) {
         $numOfPassengers = mt_rand(20, 40);
@@ -38,12 +43,21 @@ function generateRideNumber () {            //generate passenger number for ride
 }
 
 
-function generateNumber($days) {                        // generate daily number of passengers
+function generateNumber($day, $typeOfDay) {                        // generate daily number of passengers
     $numberOfPassengers = 0;
-    for ($j = 0; $j < $days; $j++) {
+    for ($j = 0; $j < $day; $j++) {
         for ($i = 0; $i < 24; $i++) {
             $numberOfPassengers += checkTime($i);
         }
+    }
+    if($typeOfDay === "Working") {
+        $numberOfPassengers *= WORKING_DAYS;
+    }
+    else if($typeOfDay === 'Saturday') {
+        $numberOfPassengers *= SATURDAY;
+    }
+    else{
+        $numberOfPassengers *= SUNDAY;
     }
     return $numberOfPassengers;
 }

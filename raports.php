@@ -8,7 +8,7 @@
     }
 ?>
 
-
+        <a href="simulate-dayli.php">Dzienne raporty</a>
         <div class="raport-type">
             <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-1">Przejazd</button>
             <section class="raports">
@@ -70,6 +70,21 @@
                     }
                 ?>
             </section>
+        </div>
+        <div>
+            <h2>Symulacja skanowania</h2>
+            <form action="php/simulate.inc.php" method="POST">
+                <input type="radio" id="working" name="typeOfDay" value="Working">
+                <label for="working">Working day</label><br>
+                <input type="radio" id="saturday" name="typeOfDay" value="Saturday">
+                <label for="saturday">Saturday</label><br>
+                <input type="radio" id="sunday" name="typeOfDay" value="Sunday">
+                <label for="sunday">Sunday</label><br>
+
+
+
+                <input type="submit" name="submit" value="Symuluj skanowanie">
+            </form>
         </div>
 
 <script>
