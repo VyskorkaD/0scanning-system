@@ -27,6 +27,20 @@ function checkTime($time) {                 //return the number of passengers de
     return $numOfPassengers;
 }
 
+function checkDay ($day) {
+    $date1 = strtotime($day);
+    $date = date("l", $date1);
+    if($date === "Monday" || $date === "Tuesday" || $date === "Wednesday" || $date === "Thursday" || $date === "Friday") {
+        return "working";
+    }
+    else if($date === "Saturday") {
+        return "saturday";
+    }
+    else {
+        return "sunday";
+    }
+}
+
 function generateNumber($dayQuantity, $typeOfDay) {
     $numberOfPassengers = 0;
     for ($j = 0; $j < $dayQuantity; $j++) {
@@ -34,13 +48,13 @@ function generateNumber($dayQuantity, $typeOfDay) {
             $numberOfPassengers += checkTime($i);
         }
     }
-    if($typeOfDay === "Working") {
+    if($typeOfDay === "working") {
         $numberOfPassengers *= WORKING_DAYS;
     }
-    else if($typeOfDay === 'Saturday') {
+    else if($typeOfDay === 'saturday') {
         $numberOfPassengers *= SATURDAY;
     }
-    else{
+    else {
         $numberOfPassengers *= SUNDAY;
     }
     return round($numberOfPassengers);
@@ -50,23 +64,15 @@ function generateBusID() {
     return mt_rand(1, 72);
 }
 
-function generateDate() {
-    $year= mt_rand(2010, date("Y"));
-    $month= mt_rand(1, 12);
-    $day= mt_rand(1, 28);
-    $randomDate = $year . "-" . $month . "-" . $day;
-    return $randomDate;
-}
-
-function createDayliRaport($conn, $busId, $day, $numOfPassengersIn, $numOfPassengersOut) {
-    $sql = "INSERT INTO raportsdayli (busID, day, numOfPassIn, numOfPassOut)
-            VALUES ($busId, \"$day\", $numOfPassengersIn, $numOfPassengersOut);";
+function createDayliRaport($conn, $busId, $day, $scanQuantity) {
+    $sql = "INSERT INTO dayliraports (busID, day, scanQuantity)
+            VALUES ($busId, \"$day\", $scanQuantity);";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     var_dump($stmt);
     var_dump($sql);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    //header("location: ../simulate-dayli.php");
-    //exit();
+    header("location: ../simulate-dayli.php");
+    exit();
 }

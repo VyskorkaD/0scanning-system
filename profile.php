@@ -5,7 +5,7 @@
         <div>
             <?php
             if (isset($_SESSION["userName"])) {
-                echo "<p class=\"error-message\">Hello there, " . $_SESSION["userName"] . "</p>";
+                echo "<p class=\"error-message\">Dzień dobry, " . $_SESSION["userName"] . "</p>";
             }
              ?>
 
@@ -48,7 +48,7 @@
                          ?>
 
                      </div>
-                     <div class="form-button">
+                     <div class="form-button-delete">
                          <input type="submit" name="delete" id="delete" value="Usuń konto">
                      </div>
                  </form>

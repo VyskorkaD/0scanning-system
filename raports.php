@@ -1,5 +1,8 @@
 <?php
     include_once 'header.php';
+    include_once 'header.php';
+    require_once 'php/dbh.inc.php';
+    require_once 'php/simulation-functions.inc.php';
 ?>
 
 <?php
@@ -8,99 +11,50 @@
     }
 ?>
 
-        <a href="simulate-dayli.php">Dzienne raporty</a>
-        <div class="raport-type">
-            <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-1">Przejazd</button>
-            <section class="raports">
-                <?php
-                    $scannedDirectory = scandir("raports/ride");
-                    $filesList = array_slice($scannedDirectory, 2);
-                    if (!empty($filesList)) {
-                        foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/ride/$file\" download><p>$file</p></a>";
-                        }
-                    }
-                    else {
-                        echo "<p>Brak raportów.</p>";
-                    }
-                ?>
-            </section>
-            <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-2">Dzienny</button>
-            <section class="raports">
-                <?php
-                    $scannedDirectory = scandir("raports/daily");
-                    $filesList = array_slice($scannedDirectory, 2);
-                    if (!empty($filesList)) {
-                       foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/daily/$file\" download><p>$file</p></a>";
-                        }
-                    }
-                    else {
-                        echo "<p>Brak raportów.</p>";
-                    }
-                ?>
-            </section>
-            <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-3">Tygodniowy</button>
-            <section class="raports">
-                <?php
-                    $scannedDirectory = scandir("raports/weekly");
-                    $filesList = array_slice($scannedDirectory, 2);
-                    if (!empty($filesList)) {
-                        foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/weekly/$file\" download><p>$file</p></a>";
-                        }
-                    }
-                    else {
-                        echo "<p>Brak raportów.</p>";
-                    }
-                ?>
-            </section>
-            <button onclick="expandList(this.nextSibling)" class="raport-button" type="raport-button" name="button-4">Miesięczny</button>
-            <section class="raports">
-                <?php
-                    $scannedDirectory = scandir("raports/monthly");
-                    $filesList = array_slice($scannedDirectory, 2);
-                    if (!empty($filesList)) {
-                        foreach ($filesList as $file) {
-                            echo "<a href=\"./raports/monthly/$file\" download><p>$file</p></a>";
-                        }
-                    }
-                    else {
-                        echo "<p>Brak raportów.</p>";
-                    }
-                ?>
-            </section>
-        </div>
-        <div>
-            <h2>Symulacja skanowania</h2>
-            <form action="php/simulate.inc.php" method="POST">
-                <input type="radio" id="working" name="typeOfDay" value="Working">
-                <label for="working">Working day</label><br>
-                <input type="radio" id="saturday" name="typeOfDay" value="Saturday">
-                <label for="saturday">Saturday</label><br>
-                <input type="radio" id="sunday" name="typeOfDay" value="Sunday">
-                <label for="sunday">Sunday</label><br>
 
 
-
+        <div class="simulate">
+            <h2>Symulacja skanowania, dzienna</h2>
+            <form action="php/simulate-dayli.inc.php" method="POST" class="simul">
+                <input type="date" min="2015-01-01" max="2025-01-01" name="date" value="2015-01-01" required>
                 <input type="submit" name="submit" value="Symuluj skanowanie">
             </form>
+
+
+
+            <table>
+                <?php
+                $sql = "SELECT * FROM dayliraports;";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                echo "<table border='1'>
+                <tr>
+                <th>Id autobusu</th>
+                <th>Data</th>
+                <th>Liczba skanowań</th>
+                </tr>";
+                while($row = $result->fetch_assoc()) {
+
+                    echo "<tr>";
+                    echo "<td>" . $row['busID'] . "</td>";
+                    echo "<td>" . $row['day'] . "</td>";
+                    echo "<td>" . $row['scanQuantity'] . "</td>";
+                    echo "</tr>";
+                }}
+                else {
+                    echo "0 results";
+                }
+                ?>
+            </table>
         </div>
 
-<script>
-    function expandList(element) {
-        function removeClass(element) {         //function that removes class
-            element.classList.remove("show");
-        }
-
-        let sectionArrayCollection = document.getElementsByTagName("section");  //get all hidden sections into HTMLCollection
-        let sectionArray = Array.prototype.slice.call(sectionArrayCollection); //convert it to array
-        //console.log(sectionArray);
-        sectionArray.forEach(element => removeClass(element));  //remove class "show" for every section
-
-        element.nextSibling.classList.add("show");   //add class "show" for section under clicked button
-    }
-</script>
+        <div class="simulate-chart">
+            <h2>Tworzenie wykresu dla określonej daty</h2>
+            <form action="php/make-chart.inc.php" method="POST" target="_blank">
+                <input type="date" min="2015-01-01" max="2025-01-01" name="date" value="2015-01-01" required>
+                <input type="submit" name="submit" value="Stwórz wykres dla określonej daty">
+            </form>
+        </div>
 
 <?php
     include_once 'footer.php';

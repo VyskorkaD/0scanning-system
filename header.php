@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="style/signup.css">
         <link rel="stylesheet" href="style/raports.css">
+        <link rel="stylesheet" href="style/profile.css">
         <title></title>
 
     </head>
@@ -21,9 +22,8 @@
                 <li><a class="" href="contact.php">Kontakt</a></li>
                 <?php
                 if (isset($_SESSION["userName"])) {
-                    //echo "<li><a class='' href='profile.php'>Profile</a></li>";
                     echo "<li><a class='' href='php/logout.inc.php'>Wyloguj się</a></li>";
-                    echo "<li><a class='' href='raports.php'>Raporty</a></li>";
+                    echo "<li><a class='' href='raports.php'>Raporty dzienne</a></li>";
                     echo "<li><a class='' href='profile.php'>Moje konto</a></li>";
                 }
                 else {

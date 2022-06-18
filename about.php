@@ -3,7 +3,7 @@
 ?>
         <?php
         if (isset($_SESSION["userName"])) {
-            echo "<p class=\"error-message\">Hello there, " . $_SESSION["userName"] . "</p>";
+            echo "<p class=\"error-message\">Dzień dobry, " . $_SESSION["userName"] . "</p>";
         }
         ?>
 

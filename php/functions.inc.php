@@ -103,14 +103,12 @@ function editUser ($conn, $name, $email, $username) {
             WHERE usersUsername = '$username';";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
-    var_dump($stmt);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     session_start();
     session_unset();
     session_destroy();
-    header ("location: ../about.php");
-    //header("location: ../profile.php?error=none");
+    header ("location: ../about.php");;
     exit();
 }
 

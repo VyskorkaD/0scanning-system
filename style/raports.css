@@ -1,52 +1,13 @@
-.buttons {
-    width: 80%;
-    margin: auto;
-    padding-top: 20px;
+.simulate {
+    float: left;
 }
 
-.raport-type {
-    display: flex;
-    justify-content: space-around;
+table {
+    margin-top: 10px;
 }
 
-button {
-    background-color: #A69077;
-    color: #594D42;
-    font-size: 20px;
-    border-radius: 10%;
-    transition-duration: 0.5s;
-    cursor: pointer;
-    border: none;
-    padding: 15px 15px;
-}
+.simulate-chart {
+    float: left;
+    margin-left: 150px;
 
-button:hover {
-    background-color: #F2E2CE;
-}
-
-.raports {
-    display: none;
-    position: absolute;
-    margin: auto;
-    top: 300px;
-    background-color: #594D42;
-    border-radius: 10%;
-}
-
-.show {
-    display: block;
-}
-
-.raports p {
-    font-size: 18px;
-    color: #F2E2CE;
-    padding: 5px 30px;
-}
-
-.raports a {
-    text-decoration: none;
-}
-
-.raports p:hover {
-    color: #A69077;
 }
