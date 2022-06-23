@@ -23,10 +23,10 @@ function getData ($day, $conn) {
     $graph = new Graph(1000, 500);
     $graph->ClearTheme();
     $graph->SetScale("textint");
-    $graph->title->Set('Autobusy');
-    $graph->xaxis->title->Set('(linia)');
+    $graph->title->Set('Wykres dla dnia ' . $day);
+    $graph->xaxis->title->Set('Numer linii');
     $graph->xaxis->SetTickLabels($buses);
-    $graph->yaxis->title->Set('(Skanowania');
+    $graph->yaxis->title->Set('Liczba Skanowań');
     $graph->yaxis->SetTitleMargin(70);
     $graph->xaxis->SetTitleMargin(40);
     $graph->img->SetMargin(100, 20, 50, 80);

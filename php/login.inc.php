@@ -12,8 +12,6 @@ if (isset($_POST["submit"])) {
        exit();
     }
 
-    /* Add more error handlers later */
-
     loginUser($conn, $username, $password);
 }
 else {

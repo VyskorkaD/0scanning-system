@@ -7,7 +7,6 @@ if(isset($_POST["submit"])) {
     require_once 'simulation-functions.inc.php';
 
     $busId = generateBusId();
-    //$day = generateDate();
     $scanQuantity = generateNumber(1, checkDay($day));
 
     createDayliRaport($conn, $busId, $day, $scanQuantity);

@@ -1,8 +1,8 @@
 <?php
 
 define("WORKING_DAYS", 1);
-define("SATURDAY", 0.5844);
-define("SUNDAY", 0.4088);
+define("SATURDAY", 0.534);
+define("SUNDAY", 0.3435);
 
 function checkTime($time) {                 //return the number of passengers depends on time
     if ($time >= 0 && $time < 6) {
@@ -73,6 +73,6 @@ function createDayliRaport($conn, $busId, $day, $scanQuantity) {
     var_dump($sql);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../simulate-dayli.php");
+    header("location: ../raports.php");
     exit();
 }

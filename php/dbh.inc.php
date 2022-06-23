@@ -1,10 +1,9 @@
 <?php
-$serverName = "localhost";       //name of the server
-$dbUserName = "root";       //database user name
-$dbPassword = "";            //database password
-$dbName = "scanning-system";                 //name of the database
+$serverName = "localhost";       
+$dbUserName = "root";
+$dbPassword = "";
+$dbName = "scanning-system";
 $conn = mysqli_connect($serverName, $dbUserName, $dbPassword, $dbName);
-//var_dump($conn);
 if (!$conn) {
-    die("Connection to DB failed: " . mysqli_connect_error());
+    die("Błąd łączenia z bazą danych: " . mysqli_connect_error());
 }

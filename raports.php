@@ -29,7 +29,7 @@
                 if ($result->num_rows > 0) {
                 echo "<table border='1'>
                 <tr>
-                <th>Id autobusu</th>
+                <th>Numer linii</th>
                 <th>Data</th>
                 <th>Liczba skanowań</th>
                 </tr>";

@@ -9,14 +9,15 @@
 
         <section class="about-info">
             <article class="about-main">
-                <p>Projekt opisuje oprogramowanie system czujników termicznych oraz wideo służących do zliczania osób oraz prowadzenia statystyk. Czujniki te są zlokalizowane przy drzwiach autobusu i skanują osoby wsiadające i wysiadające.</p>
-                <p>Makieta systemu jest stworzona w językach HTML, CSS oraz JavaScript po stronie front-endu oraz PHP po stronie back-endu. Ta makieta nie będzie powiązana z fizycznym odzwierczedleniem czujników, służących do skanowania, lecz będzie korzystała z wirtualnej symulacji procesu skanowania.</p>
-                <p>Główne funkcjonalności tej wersji:</p>
+                <p>Projekt przedstawia oprogramowanie służące do sumylacji zliczania zeskanowanych w pojazdach komunikacji miejskiej pasażerów.</p>
+                <p>System jest stworzony w językach HTML, CSS oraz JavaScript po stronie front-endu oraz PHP po stronie back-endu. Ten system nie jest  powiązany z fizycznym odzwierczedleniem czujników, służących do skanowania, lecz korzysta z wirtualnej symulacji procesu skanowania.</p>
+                <p>Główne funkcjonalności systemu:</p>
                 <ol>
-                    <li>Gotowa makieta interfejsu graficznego użytkownika;</li>
-                    <li>Możliwość logowania się do systemu;</li>
-                    <li>Możliwość pobierania szablonów raportów;</li>
-                    <li>Symulacja procesu skanowania oraz generowanie raportów wypełnionych pseudorandomowymi danamy;</li>
+                    <li>Gotowy interfejs graficzny użytkownika;</li>
+                    <li>Możliwość tworzenia konta oraz logowania się do systemu;</li>
+                    <li>Symulacja procesu skanowania oraz generowanie raportów wypełnionych pseudolosowymi danymi;</li>
+                    <li>Możliwość tworzenia wykresów slużących do porównywania liczby pasażerów dla poszczególnych linii komunikacji miejskiej;</li>
+
             </article>
         </section>
 <?php
